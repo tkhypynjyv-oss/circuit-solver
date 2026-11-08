@@ -191,20 +191,22 @@ function prompt1(){const lv=$('#lvl').value==='b'?'اشرح كأن الطالب 
 const q=$('#q').value.trim();
 return SYS+'\n'+lv+'\nنوع المسألة: '+TOP[tp]+(q?'\nنص المسألة:\n'+q:'')+(docT?'\nمحتوى الملف المرفق:\n'+docT.slice(0,6000):'')+(imgs.length?'\nالصور المرفقة هي الدائرة أو المسألة؛ ابدأ بقراءتها بدقة.':'')}
 
-async function api(messages){const r=await fetch('/api/solve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages,tools:TOOLS.map(t=>({name:t.name,description:t.description,input_schema:t.inputSchema}))})});
+async function api(contents){const r=await fetch('/api/solve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({contents,tools:[{function_declarations:TOOLS.map(t=>({name:t.name,description:t.description,parameters:t.inputSchema}))}]})});
 if(r.status===429)throw{code:'rate_limited'};
 if(!r.ok){let m='';try{m=(await r.json()).error}catch(e){}throw new Error(m||('HTTP '+r.status))}return r.json()}
 const b64=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(',')[1]);f.readAsDataURL(b)});
-async function toMsgs(input,withImgs){if(typeof input!=='string')return input.map(m=>({role:m.role,content:m.content}));
-const c=[];if(withImgs)for(const i of imgs)c.push({type:'image',source:{type:'base64',media_type:'image/jpeg',data:await b64(i.blob)}});
-c.push({type:'text',text:input});return[{role:'user',content:c}]}
+async function toMsgs(input,withImgs){if(typeof input!=='string')return input.map(m=>({role:m.role==='assistant'?'model':'user',parts:[{text:m.content}]}));
+const p=[];if(withImgs)for(const i of imgs)p.push({inline_data:{mime_type:'image/jpeg',data:await b64(i.blob)}});
+p.push({text:input});return[{role:'user',parts:p}]}
 async function run(input,withImgs){
 busy=true;upd();note('');$('#out').hidden=false;$('#ans').innerHTML='<p class="wait">جارٍ قراءة الدائرة وحلّها…</p>';$('#out').scrollIntoView({behavior:'smooth'});
-try{const msgs=await toMsgs(input,withImgs),all=[];let r;
-for(let k=0;k<6;k++){r=await api(msgs);msgs.push({role:'assistant',content:r.content});
-all.push(...r.content.filter(b=>b.type==='text').map(b=>b.text));last=all.join('\n');$('#ans').innerHTML=md(last);
-const tu=r.content.filter(b=>b.type==='tool_use');if(!tu.length)break;
-msgs.push({role:'user',content:tu.map(b=>{let c;try{c=JSON.stringify(solve(b.input))}catch(e){c='error: '+e.message}return{type:'tool_result',tool_use_id:b.id,content:c}})})}
+try{const msgs=await toMsgs(input,withImgs),all=[];
+for(let k=0;k<6;k++){const r=await api(msgs),c=r.candidates&&r.candidates[0]&&r.candidates[0].content;
+if(!c||!c.parts)throw new Error(r.promptFeedback&&r.promptFeedback.blockReason?'تم حجب الطلب من الخدمة':'لم يصل رد من النموذج');
+msgs.push(c);
+all.push(...c.parts.filter(p=>p.text&&!p.thought).map(p=>p.text));last=all.join('\n');$('#ans').innerHTML=md(last);
+const fc=c.parts.filter(p=>p.functionCall);if(!fc.length)break;
+msgs.push({role:'user',parts:fc.map(p=>{let o;try{o=solve(p.functionCall.args||{})}catch(e){o={error:e.message}}return{functionResponse:{name:p.functionCall.name,response:o}}})})}
 return last}
 catch(e){const m={not_granted:'يلزم السماح باستخدام Claude لحلّ المسألة.',rate_limited:'عدد الطلبات كبير الآن؛ انتظر قليلاً ثم أعد المحاولة.'}[e.code]||('تعذّر الحل: '+(e.message||'خطأ غير معروف'));
 note(m,1);if(e.text){last=e.text;$('#ans').innerHTML=md(last)}else{last='';$('#ans').innerHTML=''}return null}

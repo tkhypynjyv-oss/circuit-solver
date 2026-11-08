@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حلّال الدوائر الكهربائية | حل دوائر DC و AC خطوة بخطوة</title>
+<meta name="description" content="حلّال دوائر كهربائية مجاني للطلاب: كيرشوف، ثيفنن ونورتن، المصادر المعتمدة، ودوائر AC. ارفع صورة الدائرة أو صوّرها واحصل على الحل خطوة بخطوة مع ملف PDF.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E⚡%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--paper:#eef3f6;--panel:#fff;--ink:#10283a;--mute:#566d7e;--line:#c5d6e0;--pri:#1b5e8c;--on:#fff;--hot:#f2a900;--hotbg:#fff3d1;--eqbg:#e6eff5;--grid:rgba(27,94,140,.08)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0c1822;--panel:#13242f;--ink:#e2edf3;--mute:#93aab9;--line:#264356;--pri:#5fb0e3;--on:#06202f;--hotbg:#3a2f0b;--eqbg:#0f2230;--grid:rgba(95,176,227,.07)}}
+:root[data-theme="dark"]{--paper:#0c1822;--panel:#13242f;--ink:#e2edf3;--mute:#93aab9;--line:#264356;--pri:#5fb0e3;--on:#06202f;--hotbg:#3a2f0b;--eqbg:#0f2230;--grid:rgba(95,176,227,.07)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.75 "IBM Plex Sans Arabic",Tahoma,sans-serif;
+background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px}
+.wrap{max-width:760px;margin:0 auto;padding:1.25rem 1rem 3rem}
+h1{font-size:1.9rem;line-height:1.3;margin:.5rem 0 .25rem;font-weight:700}
+.sub{margin:0;color:var(--mute);max-width:34rem}
+.zz{width:100%;height:28px;margin:.75rem 0 1rem;color:var(--pri)}
+.card{background:var(--panel);border:1.5px solid var(--line);border-radius:10px;padding:1rem;margin-bottom:1rem}
+h2{font-size:1.15rem;margin:0 0 .75rem;font-weight:700}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+.btn,button{font:inherit;cursor:pointer;border:1.5px solid var(--pri);background:transparent;color:var(--pri);border-radius:8px;padding:.55rem .4rem;text-align:center;font-weight:500;font-size:.92rem;min-height:44px;display:flex;align-items:center;justify-content:center}
+.btn:hover,button:hover{background:var(--eqbg)}
+:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+.thumbs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0 0}
+.th{position:relative}
+.th img{height:84px;max-width:140px;object-fit:cover;border-radius:6px;border:1.5px solid var(--line);display:block}
+.th b{position:absolute;top:-6px;inset-inline-start:-6px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:var(--paper);font-size:.8rem;display:grid;place-items:center;cursor:pointer;line-height:1}
+.dn{margin:.4rem 0 0;font-size:.85rem;color:var(--mute)}
+textarea{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:8px;padding:.7rem;margin-top:.75rem;resize:vertical;min-height:96px}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap;margin:.6rem 0}
+.chips button{border-color:var(--line);color:var(--mute);border-radius:99px;padding:.2rem .8rem;min-height:36px;font-size:.85rem}
+.chips button.on{background:var(--pri);border-color:var(--pri);color:var(--on)}
+.lab{font-size:.85rem;color:var(--mute);margin:.5rem 0 0}
+.row{display:flex;gap:.6rem;margin-top:.9rem}
+select{font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:8px;padding:.5rem;min-height:48px}
+.go{flex:1;background:var(--pri);color:var(--on);font-size:1.05rem;min-height:48px}
+.go:hover{background:var(--pri);filter:brightness(1.1)}
+.go:disabled{opacity:.5;cursor:not-allowed}
+.note{margin:.7rem 0 0;font-size:.88rem;color:var(--mute)}
+.note.err{color:#c0392b}
+.bar{display:flex;gap:.5rem;margin-bottom:.5rem}
+.bar button{flex:1}
+#ans h3{font-size:1.1rem;margin:1.3rem 0 .3rem;padding-bottom:.2rem;border-bottom:2px solid var(--line)}
+#ans p{margin:.4rem 0}
+#ans ul{padding-inline-start:1.3rem;margin:.4rem 0}
+.eq{direction:ltr;text-align:left;font:500 .95rem/1.7 "IBM Plex Mono",ui-monospace,monospace;background:var(--eqbg);border-inline-start:3px solid var(--pri);padding:.4rem .75rem;margin:.4rem 0;overflow-x:auto;white-space:pre}
+.m{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.92em;unicode-bidi:isolate}
+.res{background:var(--hotbg);border-inline-start:5px solid var(--hot);border-radius:6px;padding:.5rem .8rem;margin:.4rem 0;font-weight:500}
+.wait{color:var(--mute)}
+details{border-top:1px solid var(--line);padding:.4rem 0}
+summary{cursor:pointer;font-weight:500;min-height:36px;display:flex;align-items:center}
+details ul{margin:.2rem 0 .5rem;padding-inline-start:1.3rem}
+.pp{position:fixed;left:-9999px;top:0;width:760px;background:#fff;color:#10283a;padding:32px;font:400 16px/1.75 "IBM Plex Sans Arabic",Tahoma,sans-serif}
+.pp .eq{background:#e6eff5}.pp .res{background:#fff3d1}.pp img{height:150px;margin:4px}
+@media(prefers-reduced-motion:no-preference){#ans{animation:f .25s}@keyframes f{from{opacity:.4}}}
+@media(max-width:420px){.acts{grid-template-columns:1fr}h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<h1>حلّال الدوائر الكهربائية</h1>
+<p class="sub">صوّر الدائرة أو اكتب مسألتك، وستحصل على الحل خطوة بخطوة مع شرح القانون المستخدم.</p>
+<svg class="zz" viewBox="0 0 400 28" preserveAspectRatio="none" aria-hidden="true"><path d="M0 14H120l8-12 14 24 14-24 14 24 14-24 14 24 8-12H400" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+</header>
+
+<section class="card" aria-labelledby="h-in">
+<h2 id="h-in">مسألتك</h2>
+<div class="acts">
+<label class="btn"><input type="file" id="fImg" accept="image/*" multiple hidden>رفع صورة</label>
+<label class="btn"><input type="file" id="fCam" accept="image/*" capture="environment" hidden>التقاط بالكاميرا</label>
+<label class="btn"><input type="file" id="fDoc" accept=".txt,.cir,.net,.sp,.csv,.json,text/*" hidden>رفع ملف نصي</label>
+</div>
+<div id="thumbs" class="thumbs"></div>
+<p id="dn" class="dn"></p>
+<textarea id="q" placeholder="اكتب نص المسألة، أو أضف ما تريد من الصورة: مثلاً «أوجد i₀ بقانون كيرشوف»"></textarea>
+<p class="lab">أمثلة سريعة</p>
+<div class="chips" id="ex"></div>
+<p class="lab">نوع المسألة</p>
+<div class="chips" id="tp"></div>
+<div class="row">
+<select id="lvl" aria-label="مستوى الشرح"><option value="b">شرح مفصّل للمبتدئين</option><option value="s">حل مختصر</option></select>
+<button class="go" id="go" disabled>حلّ المسألة</button>
+</div>
+<p class="note" id="note"></p>
+</section>
+
+<section class="card" id="out" hidden aria-live="polite">
+<h2>الحل</h2>
+<div class="bar"><button id="pdf" disabled>حفظ كملف PDF</button><button id="clr">مسألة جديدة</button></div>
+<div id="ans"></div>
+<textarea id="fu" rows="2" placeholder="لم تفهم خطوة؟ أو الصورة قُرئت بشكل خاطئ؟ اكتب تصحيحك أو سؤالك هنا"></textarea>
+<div class="row"><button class="go" id="fgo" disabled>أرسل</button></div>
+</section>
+
+<section class="card">
+<h2>مرجع سريع</h2>
+<details><summary>القوانين الأساسية</summary><ul>
+<li>قانون أوم: <span class="m" dir="ltr">V = I·R</span></li>
+<li>KCL: مجموع التيارات الداخلة إلى عقدة = مجموع الخارجة.</li>
+<li>KVL: مجموع الجهود حول أي حلقة مغلقة = صفر.</li>
+<li>مجزئ الجهد: <span class="m" dir="ltr">V₁ = V·R₁/(R₁+R₂)</span>، ومجزئ التيار: <span class="m" dir="ltr">I₁ = I·R₂/(R₁+R₂)</span></li>
+</ul></details>
+<details><summary>خطوات دائرة ثيفنن</summary><ul>
+<li>أزل الحمل وضع طرفين a وb.</li>
+<li>احسب <span class="m" dir="ltr">Vth</span> = الجهد بين a وb والدائرة مفتوحة.</li>
+<li>احسب <span class="m" dir="ltr">Rth</span>: أطفئ المصادر المستقلة (الجهد يصير قصراً، والتيار يصير فتحاً) ثم احسب المقاومة من الطرفين.</li>
+<li>مع المصادر المعتمدة لا تُطفئها؛ استخدم <span class="m" dir="ltr">Rth = Voc/Isc</span> أو مصدر اختبار.</li>
+</ul></details>
+<details><summary>دوائر AC</summary><ul>
+<li>المحث: <span class="m" dir="ltr">Z = jωL = jX_L</span>، والمكثف: <span class="m" dir="ltr">Z = 1/(jωC) = −jX_C</span></li>
+<li>اجمع المعاوقات كما تجمع المقاومات، لكن بالأعداد المركبة.</li>
+<li>القدرة المركبة: <span class="m" dir="ltr">S = V·I* = P + jQ</span></li>
+</ul></details>
+<details><summary>المصادر المعتمدة</summary><ul>
+<li>لا تتجاهل المصدر المعتمد ولا تُطفئه عند التراكب أو ثيفنن.</li>
+<li>عبّر عن متغير التحكم (<span class="m" dir="ltr">Vx</span> أو <span class="m" dir="ltr">Ix</span>) بدلالة مجاهيل الدائرة، ثم عوّضه في المعادلة.</li>
+</ul></details>
+</section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s);
+const TOP=['تلقائي','كيرشوف وتحليل العقد/الحلقات','ثيفنن ونورتن','مصادر معتمدة','AC وفازورات','قدرة وتراكب'];
+const EX=['أوجد التيار i₀ بقانون كيرشوف','أوجد Vth و Rth بين الطرفين a و b','احسب I وV₂ وI_L في دائرة AC','أوجد المعاوقة الكلية Z_T'];
+const SYS=`أنت مدرّس دوائر كهربائية 1 و2 لطلاب هندسة كهربائية جدد. اكتب بالعربية البسيطة والمصطلحات الإنجليزية بين قوسين.
+المنهج: DC وAC (فازورات، معاوقة، قدرة)، كيرشوف KCL وKVL، تحليل العقد والحلقات، التراكب، ثيفنن ونورتن، المصادر المعتمدة، أقصى نقل قدرة، الرنين.
+اتبع هذه الأقسام دائماً:
+## قراءة الدائرة
+اذكر العناصر وقيمها والعقد واتجاهات التيارات والافتراضات (والتردد إن وُجد). إن لم تتأكد من شيء في الصورة فاذكره صراحة ولا تخمّنه بصمت.
+## الفكرة
+لماذا اخترت هذه الطريقة (جملة أو اثنتان).
+## الحل
+خطوات متسلسلة. كل معادلة في سطر مستقل بين $$ و $$ مع التعويض العددي.
+## التحقق
+تحقق مستقل (KCL عند عقدة أخرى أو توازن القدرة).
+## النتائج
+كل نتيجة في سطر يبدأ بـ "=> " مع الوحدة. في AC اكتب الشكل القطبي والمستطيل.
+لأي نظام معادلات خطية (مجهولان فأكثر أو أعداد مركبة) استدعِ الأداة solve_linear_system بدل الحساب الذهني ثم استخدم نتيجتها.
+الصيغة: عناوين "## "، نقاط "- "، **غامق**، $رمز$ للرموز داخل الجمل. لا جداول ولا LaTeX؛ استخدم رموز يونيكود (Ω ∠ √ × ₁ ₂ °).`;
+let S=null,caps=null,imgs=[],docT='',tp=0,hist=[],busy=false,last='';
+
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const inl=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\$(.+?)\$/g,'<span class="m" dir="ltr">$1</span>');
+function md(t){let h='',ul=false;for(const L of t.split('\n')){const l=L.trim(),li=l.startsWith('- ');
+if(ul&&!li){h+='</ul>';ul=false}
+if(li){if(!ul){h+='<ul>';ul=true}h+='<li>'+inl(l.slice(2))+'</li>'}
+else if(l.startsWith('## '))h+='<h3>'+inl(l.slice(3))+'</h3>'
+else if(/^\$\$.+\$\$$/.test(l))h+='<div class="eq" dir="ltr">'+esc(l.slice(2,-2).trim())+'</div>'
+else if(l.startsWith('=> '))h+='<div class="res">'+inl(l.slice(3))+'</div>'
+else if(l)h+='<p>'+inl(l)+'</p>'}
+return h+(ul?'</ul>':'')}
+
+/* complex linear solver offered to the model as a tool */
+function solve({A_re,A_im,b_re,b_im}){
+const n=b_re.length,z=[0,0];
+const M=A_re.map((r,i)=>[...r.map((v,j)=>[v,(A_im&&A_im[i]&&A_im[i][j])||0]),[b_re[i],(b_im&&b_im[i])||0]]);
+const mul=(a,b)=>[a[0]*b[0]-a[1]*b[1],a[0]*b[1]+a[1]*b[0]];
+const div=(a,b)=>{const d=b[0]*b[0]+b[1]*b[1];return[(a[0]*b[0]+a[1]*b[1])/d,(a[1]*b[0]-a[0]*b[1])/d]};
+for(let c=0;c<n;c++){let p=c;for(let r=c+1;r<n;r++)if(Math.hypot(...M[r][c])>Math.hypot(...M[p][c]))p=r;
+if(Math.hypot(...M[p][c])<1e-12)throw new Error('singular system');
+[M[c],M[p]]=[M[p],M[c]];
+for(let r=0;r<n;r++){if(r===c)continue;const f=div(M[r][c],M[c][c]);for(let k=c;k<=n;k++){const t=mul(f,M[c][k]);M[r][k]=[M[r][k][0]-t[0],M[r][k][1]-t[1]]}}}
+return{x:M.map((row,i)=>{const v=div(row[n],row[i]);return{re:+v[0].toFixed(6),im:+v[1].toFixed(6),mag:+Math.hypot(...v).toFixed(6),deg:+(Math.atan2(v[1],v[0])*180/Math.PI).toFixed(4)}})}}
+const mat={type:'array',items:{type:'array',items:{type:'number'}}},vec={type:'array',items:{type:'number'}};
+const TOOLS=[{name:'solve_linear_system',description:'Solve A·x=b with complex entries (Gauss-Jordan). Give A_re and b_re; A_im and b_im are optional and default to zero. Returns x[i] as re, im, mag, deg.',inputSchema:{type:'object',properties:{A_re:mat,A_im:mat,b_re:vec,b_im:vec},required:['A_re','b_re']},execute:solve}];
+
+/* UI setup */
+TOP.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t;b.className=i?'':'on';b.onclick=()=>{tp=i;[...$('#tp').children].forEach((c,j)=>c.classList.toggle('on',j===i))};$('#tp').append(b)});
+EX.forEach(t=>{const b=document.createElement('button');b.textContent=t;b.onclick=()=>{$('#q').value=t;upd()};$('#ex').append(b)});
+
+async function shrink(f){try{const bm=await createImageBitmap(f),s=Math.min(1,1600/Math.max(bm.width,bm.height)),c=document.createElement('canvas');
+c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(bm,0,0,c.width,c.height);
+return await new Promise(r=>c.toBlob(r,'image/jpeg',.85))}catch(e){return null}}
+function thumbs(){const t=$('#thumbs');t.innerHTML='';imgs.forEach((o,i)=>{const d=document.createElement('div');d.className='th';d.innerHTML='<img alt="صورة المسألة" src="'+o.url+'"><b role="button" aria-label="حذف الصورة" tabindex="0">×</b>';
+d.querySelector('b').onclick=()=>{imgs.splice(i,1);thumbs();upd()};t.append(d)});upd()}
+for(const id of['fImg','fCam'])$('#'+id).onchange=async e=>{for(const f of e.target.files){const b=await shrink(f);if(b)imgs.push({blob:b,url:URL.createObjectURL(b)});else note('تعذّر قراءة الصورة؛ جرّب صيغة JPG أو PNG.',1)}e.target.value='';thumbs()};
+$('#fDoc').onchange=async e=>{const f=e.target.files[0];if(f){docT=await f.text();$('#dn').textContent='الملف المرفق: '+f.name}e.target.value='';upd()};
+function note(t,err){const n=$('#note');n.textContent=t;n.className='note'+(err?' err':'')}
+function upd(){const ok=!!S&&!busy&&($('#q').value.trim()||imgs.length||docT);$('#go').disabled=!ok;$('#fgo').disabled=!(S&&!busy&&last&&$('#fu').value.trim());$('#pdf').disabled=!last||busy}
+$('#q').oninput=$('#fu').oninput=upd;
+
+function prompt1(){const lv=$('#lvl').value==='b'?'اشرح كأن الطالب يتعلّم لأول مرة: اذكر القانون قبل استخدامه وعلّل كل خطوة.':'اختصر: خطوات مركّزة بلا شرح زائد.';
+const q=$('#q').value.trim();
+return SYS+'\n'+lv+'\nنوع المسألة: '+TOP[tp]+(q?'\nنص المسألة:\n'+q:'')+(docT?'\nمحتوى الملف المرفق:\n'+docT.slice(0,6000):'')+(imgs.length?'\nالصور المرفقة هي الدائرة أو المسألة؛ ابدأ بقراءتها بدقة.':'')}
+
+async function api(messages){const r=await fetch('/api/solve',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages,tools:TOOLS.map(t=>({name:t.name,description:t.description,input_schema:t.inputSchema}))})});
+if(r.status===429)throw{code:'rate_limited'};
+if(!r.ok){let m='';try{m=(await r.json()).error}catch(e){}throw new Error(m||('HTTP '+r.status))}return r.json()}
+const b64=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result.split(',')[1]);f.readAsDataURL(b)});
+async function toMsgs(input,withImgs){if(typeof input!=='string')return input.map(m=>({role:m.role,content:m.content}));
+const c=[];if(withImgs)for(const i of imgs)c.push({type:'image',source:{type:'base64',media_type:'image/jpeg',data:await b64(i.blob)}});
+c.push({type:'text',text:input});return[{role:'user',content:c}]}
+async function run(input,withImgs){
+busy=true;upd();note('');$('#out').hidden=false;$('#ans').innerHTML='<p class="wait">جارٍ قراءة الدائرة وحلّها…</p>';$('#out').scrollIntoView({behavior:'smooth'});
+try{const msgs=await toMsgs(input,withImgs),all=[];let r;
+for(let k=0;k<6;k++){r=await api(msgs);msgs.push({role:'assistant',content:r.content});
+all.push(...r.content.filter(b=>b.type==='text').map(b=>b.text));last=all.join('\n');$('#ans').innerHTML=md(last);
+const tu=r.content.filter(b=>b.type==='tool_use');if(!tu.length)break;
+msgs.push({role:'user',content:tu.map(b=>{let c;try{c=JSON.stringify(solve(b.input))}catch(e){c='error: '+e.message}return{type:'tool_result',tool_use_id:b.id,content:c}})})}
+return last}
+catch(e){const m={not_granted:'يلزم السماح باستخدام Claude لحلّ المسألة.',rate_limited:'عدد الطلبات كبير الآن؛ انتظر قليلاً ثم أعد المحاولة.'}[e.code]||('تعذّر الحل: '+(e.message||'خطأ غير معروف'));
+note(m,1);if(e.text){last=e.text;$('#ans').innerHTML=md(last)}else{last='';$('#ans').innerHTML=''}return null}
+finally{busy=false;upd()}}
+
+$('#go').onclick=async()=>{const p=prompt1();hist=[{role:'user',content:p}];const a=await run(p,true);if(a)hist.push({role:'assistant',content:a})};
+$('#fgo').onclick=async()=>{const t=$('#fu').value.trim();hist.push({role:'user',content:t});$('#fu').value='';const a=await run(hist,false);if(a)hist.push({role:'assistant',content:a});else hist.pop()};
+$('#clr').onclick=()=>{imgs=[];docT='';last='';hist=[];$('#q').value='';$('#dn').textContent='';$('#out').hidden=true;thumbs();window.scrollTo({top:0,behavior:'smooth'})};
+
+$('#pdf').onclick=async()=>{
+if(!window.html2canvas||!window.jspdf){note('مكتبة PDF لم تُحمَّل بعد؛ أعد المحاولة بعد لحظات.',1);return}
+const p=document.createElement('div');p.className='pp';p.dir='rtl';
+p.innerHTML='<h2 style="margin:0 0 4px">حلّال الدوائر الكهربائية</h2><div style="color:#566d7e;margin-bottom:12px">'+new Date().toLocaleDateString('ar')+'</div>'+
+(imgs.length?'<div>'+imgs.map(i=>'<img src="'+i.url+'">').join('')+'</div>':'')+($('#q').value.trim()?'<p><b>المسألة:</b> '+esc($('#q').value.trim())+'</p>':'')+md(last);
+document.body.append(p);
+try{const c=await html2canvas(p,{scale:2,backgroundColor:'#fff'});const doc=new jspdf.jsPDF({unit:'pt',format:'a4'});
+const W=doc.internal.pageSize.getWidth(),H=doc.internal.pageSize.getHeight(),r=W/c.width,ph=Math.floor(H/r);
+for(let y=0,i=0;y<c.height;y+=ph,i++){const s=document.createElement('canvas');s.width=c.width;s.height=Math.min(ph,c.height-y);
+s.getContext('2d').drawImage(c,0,y,c.width,s.height,0,0,c.width,s.height);if(i)doc.addPage();doc.addImage(s.toDataURL('image/jpeg',.92),'JPEG',0,0,W,s.height*r)}
+doc.save('circuit-solution.pdf');note('')}
+catch(e){if(e&&e.code!=='declined')note('تعذّر إنشاء الملف.',1)}
+finally{p.remove()}};
+
+S=true;caps={images:true};upd();
+</script>
+</body>
+</html>
